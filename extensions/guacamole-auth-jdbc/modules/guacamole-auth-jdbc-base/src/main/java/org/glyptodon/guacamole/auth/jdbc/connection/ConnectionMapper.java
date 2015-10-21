@@ -22,6 +22,7 @@
 
 package org.glyptodon.guacamole.auth.jdbc.connection;
 
+import java.util.Collection;
 import java.util.Set;
 import org.glyptodon.guacamole.auth.jdbc.base.ModeledDirectoryObjectMapper;
 import org.glyptodon.guacamole.auth.jdbc.user.UserModel;
@@ -88,5 +89,18 @@ public interface ConnectionMapper extends ModeledDirectoryObjectMapper<Connectio
      */
     ConnectionModel selectOneByName(@Param("parentIdentifier") String parentIdentifier,
             @Param("name") String name);
+    
+    /**
+     * Selects all connections which have names containing any of the given 
+     * search terms. 
+     *
+     * @param terms
+     *     The search terms to use for finding the connections to return.
+     *
+     * @return 
+     *     A Collection of all connections with identifiers containing any of 
+     *     the given search terms.
+     */
+    Collection<ConnectionModel> search(@Param("terms") Collection<String> terms);
     
 }

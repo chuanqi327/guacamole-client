@@ -22,6 +22,7 @@
 
 package org.glyptodon.guacamole.auth.jdbc.user;
 
+import java.util.Collection;
 import org.glyptodon.guacamole.auth.jdbc.base.ModeledDirectoryObjectMapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -43,5 +44,18 @@ public interface UserMapper extends ModeledDirectoryObjectMapper<UserModel> {
      *     The user having the given username, or null if no such user exists.
      */
     UserModel selectOne(@Param("username") String username);
+    
+    /**
+     * Selects all users which have identifiers containing any of the given 
+     * search terms. 
+     *
+     * @param terms
+     *     The search terms to use for finding the users to return.
+     *
+     * @return 
+     *     A Collection of all users with identifiers containing any of the 
+     *     given search terms.
+     */
+    Collection<UserModel> search(@Param("terms") Collection<String> terms);
     
 }

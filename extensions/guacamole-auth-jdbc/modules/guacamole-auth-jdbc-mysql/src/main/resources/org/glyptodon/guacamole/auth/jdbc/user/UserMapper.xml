@@ -180,4 +180,28 @@
         WHERE user_id = #{object.objectID,jdbcType=VARCHAR}
     </update>
 
+    <!-- Search multiple users by username -->
+    <select id="search" resultMap="UserResultMap">
+
+        SELECT
+            user_id,
+            username,
+            password_hash,
+            password_salt,
+            disabled,
+            expired,
+            access_window_start,
+            access_window_end,
+            valid_from,
+            valid_until,
+            timezone
+        FROM guacamole_user
+
+        <!-- Search terms -->
+        <foreach collection="terms" item="term" open="WHERE " separator=" OR ">
+            POSITION(#{term,jdbcType=VARCHAR} IN username) > 0
+        </foreach>
+
+    </select>
+
 </mapper>

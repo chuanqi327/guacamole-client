@@ -169,4 +169,23 @@
         WHERE connection_id = #{object.objectID,jdbcType=INTEGER}
     </update>
 
+    <!-- Select multiple connections by connection_name -->
+    <select id="select" resultMap="ConnectionResultMap">
+
+        SELECT
+            connection_id,
+            connection_name,
+            parent_id,
+            protocol,
+            max_connections,
+            max_connections_per_user
+        FROM guacamole_connection
+
+        <!-- Search terms -->
+        <foreach collection="terms" item="term" open="WHERE " separator=" OR ">
+            POSITION(#{term,jdbcType=VARCHAR} IN connection_name) > 0
+        </foreach>
+
+    </select>
+
 </mapper>
