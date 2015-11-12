@@ -42,6 +42,12 @@ public class MySQLEnvironment extends JDBCEnvironment {
     private static final Logger logger = LoggerFactory.getLogger(MySQLEnvironment.class);
     
     /**
+     * The default number of connection history records to search at a time,
+     * unless otherwise specified by MYSQL_HISTORY_SEARCH_RANGE.
+     */
+    private static final int DEFAULT_CONNECTION_HISTORY_RANGE = 10000;
+
+    /**
      * The default host to connect to, if MYSQL_HOSTNAME is not specified.
      */
     private static final String DEFAULT_HOSTNAME = "localhost";
@@ -193,6 +199,14 @@ public class MySQLEnvironment extends JDBCEnvironment {
         return getProperty(
             MySQLGuacamoleProperties.MYSQL_DEFAULT_MAX_GROUP_CONNECTIONS_PER_USER,
             DEFAULT_MAX_GROUP_CONNECTIONS_PER_USER
+        );
+    }
+
+    @Override
+    public int getHistorySearchRange() throws GuacamoleException {
+        return getProperty(
+            MySQLGuacamoleProperties.MYSQL_HISTORY_SEARCH_RANGE,
+            DEFAULT_CONNECTION_HISTORY_RANGE
         );
     }
 

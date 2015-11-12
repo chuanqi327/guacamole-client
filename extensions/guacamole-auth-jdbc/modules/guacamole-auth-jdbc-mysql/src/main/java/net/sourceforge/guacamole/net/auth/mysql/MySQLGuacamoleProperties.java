@@ -167,5 +167,18 @@ public class MySQLGuacamoleProperties {
         public String getName() { return "mysql-default-max-group-connections-per-user"; }
 
     };
+    
+    /**
+     * The maximum number of history records to search through when querying
+     * connection record history. Zero denotes unlimited.
+     */
+    public static final IntegerGuacamoleProperty
+            MYSQL_HISTORY_SEARCH_RANGE =
+            new IntegerGuacamoleProperty() {
+                
+        @Override
+        public String getName() { return "mysql-history-search-range"; }
+        
+    };
 
 }

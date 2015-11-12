@@ -177,4 +177,17 @@ public class PostgreSQLGuacamoleProperties {
 
     };
 
+    /**
+     * The maximum number of history records to search through when querying
+     * connection record history. Zero denotes unlimited.
+     */
+    public static final IntegerGuacamoleProperty
+            POSTGRESQL_HISTORY_SEARCH_RANGE =
+            new IntegerGuacamoleProperty() {
+
+        @Override
+        public String getName() { return "postgresql-history-search-range"; }
+
+    };
+
 }

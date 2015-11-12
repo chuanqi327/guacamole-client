@@ -103,4 +103,17 @@ public abstract class JDBCEnvironment extends LocalEnvironment {
     public abstract int getDefaultMaxGroupConnectionsPerUser()
             throws GuacamoleException;
 
+    /**
+     * Returns the maximum number of history records to search through when
+     * querying connection record history. Zero denotes unlimited.
+     *
+     * @return
+     *     The maximum number of history records to query when searching
+     *     connection record history.
+     *
+     * @throws GuacamoleException
+     *     If an error occurs while retrieving the property.
+     */
+    public abstract int getHistorySearchRange() throws GuacamoleException;
+
 }

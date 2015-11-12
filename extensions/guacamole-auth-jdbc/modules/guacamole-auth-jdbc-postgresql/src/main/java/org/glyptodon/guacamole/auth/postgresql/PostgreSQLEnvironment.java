@@ -39,6 +39,12 @@ public class PostgreSQLEnvironment extends JDBCEnvironment {
      * Logger for this class.
      */
     private static final Logger logger = LoggerFactory.getLogger(PostgreSQLEnvironment.class);
+    
+    /**
+     * The default number of connection history records to search at a time,
+     * unless otherwise specified by POSTGRESQL_HISTORY_SEARCH_RANGE.
+     */
+    private static final int DEFAULT_CONNECTION_HISTORY_RANGE = 10000;
 
     /**
      * The default host to connect to, if POSTGRESQL_HOSTNAME is not specified.
@@ -195,6 +201,14 @@ public class PostgreSQLEnvironment extends JDBCEnvironment {
         );
     }
 
+    @Override
+    public int getHistorySearchRange() throws GuacamoleException {
+        return getProperty(
+            PostgreSQLGuacamoleProperties.POSTGRESQL_HISTORY_SEARCH_RANGE,
+            DEFAULT_CONNECTION_HISTORY_RANGE
+        );
+    }
+    
     /**
      * Returns the hostname of the PostgreSQL server hosting the Guacamole
      * authentication tables. If unspecified, this will be "localhost".
