@@ -45,9 +45,9 @@ angular.module('rest').factory('historyService', ['$injector',
      *
      * @param {String[]} [requiredContents]
      *     The set of arbitrary strings to filter with. A ConnectionHistoryEntry
-     *     must contain each of these values within the associated username,
-     *     connection name, start date, or end date to appear in the result. If
-     *     null, no filtering will be performed.
+     *     must contain each of these values within the associated username or
+     *     connection name to appear in the result. If null, no filtering will
+     *     be performed.
      *
      * @param {String[]} [sortPredicates]
      *     The set of predicates to sort against. The resulting array of

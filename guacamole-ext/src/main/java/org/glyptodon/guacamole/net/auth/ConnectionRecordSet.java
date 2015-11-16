@@ -40,28 +40,10 @@ public interface ConnectionRecordSet {
     enum SortableProperty {
 
         /**
-         * The name (not identifier) of the connection associated with the
-         * connection record.
-         */
-        CONNECTION_NAME,
-
-        /**
-         * The identifier (username) of the user that used the connection
-         * associated with the connection record.
-         */
-        USER_IDENTIFIER,
-
-        /**
          * The date and time when the connection associated with the
          * connection record began.
          */
-        START_DATE,
-
-        /**
-         * The date and time when the connection associated with the
-         * connection record ended.
-         */
-        END_DATE
+        START_DATE
 
     };
 
@@ -79,11 +61,10 @@ public interface ConnectionRecordSet {
 
     /**
      * Returns the subset of connection records to only those where the
-     * connection name, user identifier, or any associated date field contain
-     * the given value. This function may also affect the contents of the
-     * current ConnectionRecordSet. The contents of the current
-     * ConnectionRecordSet should NOT be relied upon after this function is
-     * called.
+     * connection name or user identifier contain the given value. This
+     * function may also affect the contents of the current
+     * ConnectionRecordSet. The contents of the current ConnectionRecordSet
+     * should NOT be relied upon after this function is called.
      *
      * @param value
      *     The value which all connection records within the resulting subset
